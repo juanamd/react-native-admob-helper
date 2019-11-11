@@ -1,7 +1,5 @@
 package os.juanamd.admobHelper;
 
-import android.content.Intent;
-import android.os.Build;
 import android.util.Log;
 
 import com.facebook.react.bridge.Promise;
@@ -27,10 +25,19 @@ public class RNAdmobHelperModule extends ReactContextBaseJavaModule {
 	@ReactMethod
 	public void setAppVolume(final float volume, final Promise promise) {
 		try {
+			tryInitializeMobileAds();
 			MobileAds.setAppVolume(volume);
 			promise.resolve(null);
-		} catch(Exception e) {
+		} catch (Exception e) {
 			promise.reject(e);
+		}
+	}
+
+	private void tryInitializeMobileAds() {
+		try {
+			MobileAds.initialize(getReactApplicationContext());
+		} catch (Exception e) {
+			Log.d(TAG, e.toString());
 		}
 	}
 
