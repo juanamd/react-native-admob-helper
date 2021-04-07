@@ -1,6 +1,6 @@
 {
   "name": "react-native-admob-helper",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Provides access to some methods from Admob's MobileAds class",
   "main": "index.js",
   "scripts": {
