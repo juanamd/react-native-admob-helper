@@ -23,9 +23,18 @@ public class RNAdmobHelperModule extends ReactContextBaseJavaModule {
 	}
 
 	@ReactMethod
+	public void initialize(final Promise promise) {
+		try {
+			MobileAds.initialize(getReactApplicationContext());
+			promise.resolve(null);
+		} catch (Exception e) {
+			promise.reject(e);
+		}
+	}
+
+	@ReactMethod
 	public void setAppVolume(final float volume, final Promise promise) {
 		try {
-			tryInitializeMobileAds();
 			MobileAds.setAppVolume(volume);
 			promise.resolve(null);
 		} catch (Exception e) {
@@ -33,11 +42,13 @@ public class RNAdmobHelperModule extends ReactContextBaseJavaModule {
 		}
 	}
 
-	private void tryInitializeMobileAds() {
+	@ReactMethod
+	public void setAppMuted(final boolean muted, final Promise promise) {
 		try {
-			MobileAds.initialize(getReactApplicationContext());
+			MobileAds.setAppMuted(muted);
+			promise.resolve(null);
 		} catch (Exception e) {
-			Log.d(TAG, e.toString());
+			promise.reject(e);
 		}
 	}
 
