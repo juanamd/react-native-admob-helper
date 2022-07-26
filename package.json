@@ -1,8 +1,9 @@
 {
   "name": "react-native-admob-helper",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "Provides access to some methods from Admob's MobileAds class",
   "main": "index.js",
+  "types": "types/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
